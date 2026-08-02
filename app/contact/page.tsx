@@ -117,7 +117,7 @@ export default function ContactPage() {
           titleAccent="Journey"
           titleLine2="Starts"
           titleLine2Accent="Here"
-          subtitle="Join one of our group journeys, or let us design one around your dreams"
+          subtitle="Join one of our group journeys,\nor let us design one around your dreams"
         />
 
         {/* Main Content */}

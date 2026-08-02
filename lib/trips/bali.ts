@@ -3,7 +3,7 @@ import type { TripContent } from "./types"
 export const bali: TripContent = {
   coverWeb: "/bali/bali_cover_web.png",
   coverMobile: "/bali/bali_cover_mobile.png",
-  heroSubtitle: "Sacred temples, lush rice terraces, tropical beaches and timeless island traditions",
+  heroSubtitle: "Sacred temples, lush rice terraces,\ntropical beaches and timeless island traditions",
 
   stopsCities: "Seminyak · Uluwatu · Ubud · Batur · Jatiluwih",
   groupSize: "Max 12",
