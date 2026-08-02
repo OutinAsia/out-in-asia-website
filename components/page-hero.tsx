@@ -96,7 +96,7 @@ export function PageHero({
               {eyebrow}
             </p>
             <h1 className="font-serif font-bold text-3xl sm:text-5xl lg:text-6xl text-white leading-tight mb-2 md:mb-4">
-              <span className="block">
+              <span className="block whitespace-nowrap">
                 {title}
                 {titleAccent && (
                   <>{" "}<span className="italic text-sunset-orange">{titleAccent}</span></>
@@ -112,7 +112,7 @@ export function PageHero({
               )}
             </h1>
             {subtitle && (
-              <p className="font-sans text-xs md:text-base leading-relaxed max-w-[240px] md:max-w-sm" style={{ color: "rgba(250,246,239,0.85)" }}>
+              <p className="font-sans text-[11.5px] sm:text-sm text-white/50 leading-relaxed max-w-[240px] md:max-w-sm">
                 {subtitle}
               </p>
             )}

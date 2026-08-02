@@ -163,7 +163,7 @@ function HeroSection() {
             <p className="font-sans w-full text-[11.5px] sm:text-sm text-white/50 leading-relaxed lg:whitespace-nowrap [text-wrap:normal]">
               Curated premium journeys exclusively{" "}
               <span className="md:hidden"><br /></span>
-              for the LGBTQ+ community.
+              for the LGBTQ+ community
             </p>
             <div className="hidden md:flex flex-row gap-3">
               <Link
