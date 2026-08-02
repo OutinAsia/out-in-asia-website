@@ -3,7 +3,7 @@ import type { TripContent } from "./types"
 export const southVietnam: TripContent = {
   coverWeb: "/south-vietnam/southvietnam_cover_web.png",
   coverMobile: "/south-vietnam/southvietnam_cover_mobile.png",
-  heroSubtitle: "Vibrant city life, Mekong traditions,\ntropical beaches and rainforest adventures",
+  heroSubtitle: "Vibrant city life, Mekong traditions, tropical beaches and rainforest adventures",
 
   stopsCities: "Ho Chi Minh City · Mekong Delta · Ho Tram · Cát Tiên",
   groupSize: "Max 12",
