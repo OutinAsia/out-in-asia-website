@@ -113,7 +113,19 @@ export function PageHero({
             </h1>
             {subtitle && (
               <p className="font-sans text-[11.5px] sm:text-sm text-white/50 leading-relaxed max-w-[240px] md:max-w-sm">
-                {subtitle}
+                {typeof subtitle === "string" && subtitle.includes("\n")
+                  ? subtitle.split("\n").map((line, i, lines) => (
+                      <span key={i}>
+                        {line}
+                        {i < lines.length - 1 && (
+                          <>
+                            {" "}
+                            <br className="hidden md:block" />
+                          </>
+                        )}
+                      </span>
+                    ))
+                  : subtitle}
               </p>
             )}
             {bottomContent && (

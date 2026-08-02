@@ -59,7 +59,7 @@ export default function PrivateTripsPage() {
             title="You Dream"
             titleLine2="We"
             titleLine2Accent="Design"
-            subtitle="Bespoke journeys across Southeast Asia, shaped around your group, your pace"
+            subtitle="Bespoke journeys across Southeast Asia,\nshaped around your group, your pace"
           />
 
           {/* Trip Type Cards */}
