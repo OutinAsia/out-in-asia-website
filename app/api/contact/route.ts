@@ -17,6 +17,8 @@ export async function POST(request: Request) {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Referer: "https://www.outinasia.com/contact",
+        Origin: "https://www.outinasia.com",
       },
       body: JSON.stringify({
         firstName,
