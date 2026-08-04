@@ -1,0 +1,184 @@
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft, MapPin, Clock, Backpack, Activity } from "lucide-react";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { PageHero } from "@/components/page-hero";
+import { ActivityPricingBlock } from "@/components/activity-pricing-block";
+import { BookingPolicySection } from "@/components/booking-policy-section";
+import { baliActivities, getBaliActivity } from "@/lib/bali-activities";
+
+export async function generateStaticParams() {
+  return baliActivities.map((activity) => ({ slug: activity.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const activity = getBaliActivity(slug);
+  if (!activity) return { title: "Activity Not Found" };
+  return { title: `${activity.title} | Out in Asia`, description: activity.subtitle };
+}
+
+export default async function BaliActivityPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const activity = getBaliActivity(slug);
+
+  if (!activity) notFound();
+
+  return (
+    <>
+      <Header />
+      <main className="overflow-x-hidden">
+
+        {/* ── Hero ── */}
+        <PageHero
+          image={activity.images[0].src}
+          eyebrow={activity.category.join(" · ").toUpperCase()}
+          title={activity.title}
+          subtitle={activity.subtitle}
+          topContent={
+            <Link
+              href="/services/bali-activities"
+              className="inline-flex items-center gap-2 font-sans text-white/60 hover:text-white transition-colors text-sm"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              All activities
+            </Link>
+          }
+        />
+
+        {/* ── Description ── */}
+        <section className="py-14 md:py-20 bg-warm-cream">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <div className="flex flex-wrap gap-2 mb-6">
+              {activity.category.map((cat) => (
+                <span
+                  key={cat}
+                  className="px-3 py-1 rounded-full bg-ocean-teal/10 text-ocean-teal text-xs font-sans font-semibold tracking-widest uppercase"
+                >
+                  {cat}
+                </span>
+              ))}
+            </div>
+            <p className="font-sans text-base leading-relaxed text-navy/80">
+              {activity.description}
+            </p>
+          </div>
+        </section>
+
+        {/* ── The Program ── */}
+        <section className="py-14 md:py-20 bg-[#F0E8DA]">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <p className="font-sans text-xs tracking-[0.25em] uppercase text-ocean-teal mb-3">
+                The Itinerary
+              </p>
+              <h2 className="font-serif text-3xl font-bold text-navy">
+                The <span className="italic text-sunset-orange">Program</span>
+              </h2>
+            </div>
+            <ul className="space-y-4">
+              {activity.program.map((stop, i) => (
+                <li key={i} className="flex items-start gap-4">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-sunset-orange text-white font-serif font-bold text-sm flex items-center justify-center">
+                    {i + 1}
+                  </span>
+                  <span className="font-sans text-base text-navy/80 pt-1">{stop}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* ── Gallery ── */}
+        <section className="py-14 md:py-20 bg-warm-cream">
+          <div className="mx-auto max-w-6xl px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <p className="font-sans text-xs tracking-[0.25em] uppercase text-ocean-teal mb-3">
+                Gallery
+              </p>
+              <h2 className="font-serif text-3xl font-bold text-navy">
+                A Glimpse of the <span className="italic text-sunset-orange">Day</span>
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {activity.images.map((image, i) => (
+                <div key={i} className="rounded-2xl overflow-hidden" style={{ boxShadow: "0 4px 32px rgba(14,31,56,0.08)" }}>
+                  <div className="relative" style={{ paddingBottom: "70%" }}>
+                    <Image src={image.src} alt={image.alt} fill className="object-cover" />
+                  </div>
+                  <div className="px-5 py-4 bg-white">
+                    <p className="font-sans text-sm font-semibold text-navy">{image.alt}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Logistics ── */}
+        <section className="py-10 md:py-14 bg-sunset-orange">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 text-center">
+              <div className="flex flex-col items-center gap-2">
+                <MapPin className="h-5 w-5 text-white" strokeWidth={1.5} />
+                <p className="font-serif text-white font-bold text-sm">{activity.location}</p>
+                <p className="font-sans text-white/75 text-[0.65rem] uppercase tracking-wider">Location</p>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Clock className="h-5 w-5 text-white" strokeWidth={1.5} />
+                <p className="font-serif text-white font-bold text-sm">{activity.departure}</p>
+                <p className="font-sans text-white/75 text-[0.65rem] uppercase tracking-wider">Departure</p>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Clock className="h-5 w-5 text-white" strokeWidth={1.5} />
+                <p className="font-serif text-white font-bold text-sm">{activity.arrival}</p>
+                <p className="font-sans text-white/75 text-[0.65rem] uppercase tracking-wider">Arrival</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Pricing ── */}
+        <ActivityPricingBlock
+          fee={activity.fee}
+          inclusions={activity.inclusions}
+          exclusions={activity.exclusions}
+          photoService={activity.photoService}
+        />
+
+        {/* ── What to bring / Fitness ── */}
+        <section className="py-14 md:py-20 bg-warm-cream">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-ocean-teal/10 flex items-center justify-center flex-shrink-0">
+                  <Backpack className="h-5 w-5 text-ocean-teal" strokeWidth={1.5} />
+                </div>
+                <div>
+                  <p className="font-serif text-lg font-bold text-navy mb-1.5">What to Bring</p>
+                  <p className="font-sans text-sm leading-relaxed text-navy/70">{activity.whatToBring}</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-ocean-teal/10 flex items-center justify-center flex-shrink-0">
+                  <Activity className="h-5 w-5 text-ocean-teal" strokeWidth={1.5} />
+                </div>
+                <div>
+                  <p className="font-serif text-lg font-bold text-navy mb-1.5">Fitness &amp; Difficulty</p>
+                  <p className="font-sans text-sm leading-relaxed text-navy/70">{activity.fitnessLevel}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Booking policy ── */}
+        <BookingPolicySection />
+
+      </main>
+      <Footer />
+    </>
+  );
+}
