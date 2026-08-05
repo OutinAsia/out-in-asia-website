@@ -78,12 +78,15 @@ export const baliActivities: BaliActivity[] = [
     departure: "around 10am",
     arrival: "around 2pm",
     fee: "€210 / Person (Min. 2 People)",
-    inclusions: "Transportation.",
+    inclusions:
+      "Transportation, sacred private purification ceremony, Sarung (traditional Balinese cloth required in sacred places).",
     photoService: "Professional photo service including editing: 50€/person (on request, minimum 2 people)",
     whatToBring: "Comfortable light clothes.",
     fitnessLevel: "No physical effort required.",
     images: [
       { src: "/bali-activities/activity-2/A2-01.png", alt: "Sacred purification with a Balinese healer" },
+      { src: "/bali-activities/activity-2/A2-02.png", alt: "Sacred purification with a Balinese healer" },
+      { src: "/bali-activities/activity-2/A2-03.png", alt: "Sacred purification with a Balinese healer" },
     ],
   },
   {
