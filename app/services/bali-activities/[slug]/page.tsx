@@ -1,10 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, MapPin, Clock, Backpack, Activity } from "lucide-react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PageHero } from "@/components/page-hero";
+import { ActivityGallery } from "@/components/activity-gallery";
 import { ActivityPricingBlock } from "@/components/activity-pricing-block";
 import { BookingPolicySection } from "@/components/booking-policy-section";
 import { baliActivities, getBaliActivity } from "@/lib/bali-activities";
@@ -48,51 +48,54 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
           }
         />
 
-        {/* ── Description ── */}
-        <section className="py-14 md:py-20 bg-warm-cream">
-          <div className="mx-auto max-w-3xl px-6 lg:px-8">
-            <div className="flex flex-wrap gap-2 mb-6">
-              {activity.category.map((cat) => (
-                <span
-                  key={cat}
-                  className="px-3 py-1 rounded-full bg-ocean-teal/10 text-ocean-teal text-xs font-sans font-semibold tracking-widest uppercase"
-                >
-                  {cat}
-                </span>
-              ))}
-            </div>
-            <p className="font-sans text-base leading-relaxed text-navy/80">
-              {activity.description}
-            </p>
-          </div>
-        </section>
+        {/* ── Description + Program ── */}
+        <section className="py-10 md:py-14 bg-warm-cream">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16 items-start gap-10">
+              {/* Description */}
+              <div>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {activity.category.map((cat) => (
+                    <span
+                      key={cat}
+                      className="px-3 py-1 rounded-full bg-ocean-teal/10 text-ocean-teal text-xs font-sans font-semibold tracking-widest uppercase"
+                    >
+                      {cat}
+                    </span>
+                  ))}
+                </div>
+                <p className="font-sans text-base leading-relaxed text-navy/80 max-w-xl">
+                  {activity.description}
+                </p>
+              </div>
 
-        {/* ── The Program ── */}
-        <section className="py-14 md:py-20 bg-[#F0E8DA]">
-          <div className="mx-auto max-w-3xl px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <p className="font-sans text-xs tracking-[0.25em] uppercase text-ocean-teal mb-3">
-                The Itinerary
-              </p>
-              <h2 className="font-serif text-3xl font-bold text-navy">
-                The <span className="italic text-sunset-orange">Program</span>
-              </h2>
+              {/* Program */}
+              <div>
+                <div className="mb-6">
+                  <p className="font-sans text-xs tracking-[0.25em] uppercase text-ocean-teal mb-3">
+                    The Itinerary
+                  </p>
+                  <h2 className="font-serif text-3xl font-bold text-navy">
+                    The <span className="italic text-sunset-orange">Program</span>
+                  </h2>
+                </div>
+                <ul className="space-y-4">
+                  {activity.program.map((stop, i) => (
+                    <li key={i} className="flex items-start gap-4">
+                      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-sunset-orange text-white font-serif font-bold text-sm flex items-center justify-center">
+                        {i + 1}
+                      </span>
+                      <span className="font-sans text-base text-navy/80 pt-1">{stop}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <ul className="space-y-4">
-              {activity.program.map((stop, i) => (
-                <li key={i} className="flex items-start gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-sunset-orange text-white font-serif font-bold text-sm flex items-center justify-center">
-                    {i + 1}
-                  </span>
-                  <span className="font-sans text-base text-navy/80 pt-1">{stop}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
 
         {/* ── Gallery ── */}
-        <section className="py-14 md:py-20 bg-warm-cream">
+        <section className="py-10 md:py-14 bg-[#F0E8DA]">
           <div className="mx-auto max-w-6xl px-6 lg:px-8">
             <div className="text-center mb-10">
               <p className="font-sans text-xs tracking-[0.25em] uppercase text-ocean-teal mb-3">
@@ -102,54 +105,35 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
                 A Glimpse of the <span className="italic text-sunset-orange">Day</span>
               </h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {activity.images.map((image, i) => (
-                <div key={i} className="rounded-2xl overflow-hidden" style={{ boxShadow: "0 4px 32px rgba(14,31,56,0.08)" }}>
-                  <div className="relative" style={{ paddingBottom: "70%" }}>
-                    <Image src={image.src} alt={image.alt} fill className="object-cover" />
-                  </div>
-                  <div className="px-5 py-4 bg-white">
-                    <p className="font-sans text-sm font-semibold text-navy">{image.alt}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ActivityGallery images={activity.images} />
           </div>
         </section>
 
         {/* ── Logistics ── */}
-        <section className="py-10 md:py-14 bg-sunset-orange">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 text-center">
+        <section className="py-6 md:py-8 bg-sunset-orange">
+          <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 text-center">
               <div className="flex flex-col items-center gap-2">
-                <MapPin className="h-5 w-5 text-white" strokeWidth={1.5} />
-                <p className="font-serif text-white font-bold text-sm">{activity.location}</p>
+                <MapPin className="h-4 w-4 text-white" strokeWidth={1.5} />
+                <p className="font-serif text-white font-bold text-xs sm:text-sm">{activity.location}</p>
                 <p className="font-sans text-white/75 text-[0.65rem] uppercase tracking-wider">Location</p>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <Clock className="h-5 w-5 text-white" strokeWidth={1.5} />
-                <p className="font-serif text-white font-bold text-sm">{activity.departure}</p>
+                <Clock className="h-4 w-4 text-white" strokeWidth={1.5} />
+                <p className="font-serif text-white font-bold text-xs sm:text-sm">{activity.departure}</p>
                 <p className="font-sans text-white/75 text-[0.65rem] uppercase tracking-wider">Departure</p>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <Clock className="h-5 w-5 text-white" strokeWidth={1.5} />
-                <p className="font-serif text-white font-bold text-sm">{activity.arrival}</p>
+                <Clock className="h-4 w-4 text-white" strokeWidth={1.5} />
+                <p className="font-serif text-white font-bold text-xs sm:text-sm">{activity.arrival}</p>
                 <p className="font-sans text-white/75 text-[0.65rem] uppercase tracking-wider">Arrival</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── Pricing ── */}
-        <ActivityPricingBlock
-          fee={activity.fee}
-          inclusions={activity.inclusions}
-          exclusions={activity.exclusions}
-          photoService={activity.photoService}
-        />
-
         {/* ── What to bring / Fitness ── */}
-        <section className="py-14 md:py-20 bg-warm-cream">
+        <section className="py-10 md:py-14 bg-warm-cream">
           <div className="mx-auto max-w-3xl px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex items-start gap-4">
@@ -173,6 +157,15 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
             </div>
           </div>
         </section>
+
+        {/* ── Pricing ── */}
+        <ActivityPricingBlock
+          fee={activity.fee}
+          inclusions={activity.inclusions}
+          exclusions={activity.exclusions}
+          photoService={activity.photoService}
+          activityTitle={activity.title}
+        />
 
         {/* ── Booking policy ── */}
         <BookingPolicySection />

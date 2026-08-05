@@ -5,9 +5,10 @@ interface ActivityPricingBlockProps {
   inclusions: string
   exclusions?: string
   photoService?: string
+  activityTitle: string
 }
 
-export function ActivityPricingBlock({ fee, inclusions, exclusions, photoService }: ActivityPricingBlockProps) {
+export function ActivityPricingBlock({ fee, inclusions, exclusions, photoService, activityTitle }: ActivityPricingBlockProps) {
   return (
     <section className="py-10 md:py-16 bg-[#0E1F38]">
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
@@ -61,7 +62,7 @@ export function ActivityPricingBlock({ fee, inclusions, exclusions, photoService
         </div>
 
         <a
-          href="/contact#reach-out"
+          href={`/contact?trip=private-trips&message=${encodeURIComponent(`I'm interested in the "${activityTitle}" activity.`)}#reach-out`}
           className="max-w-lg mx-auto flex items-center justify-center gap-2.5 py-4 px-8 bg-sunset-orange text-white rounded-full font-sans font-semibold text-sm hover:opacity-90 transition-opacity"
         >
           <Mail className="h-4 w-4 flex-shrink-0" />

@@ -65,12 +65,15 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedTrip, setSelectedTrip] = useState("");
+  const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const trip = params.get("trip");
     if (trip) setSelectedTrip(trip);
+    const prefillMessage = params.get("message");
+    if (prefillMessage) setMessage(prefillMessage);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -147,6 +150,7 @@ export default function ContactPage() {
                         onClick={() => {
                           setIsSubmitted(false);
                           setSelectedTrip("");
+                          setMessage("");
                           setError("");
                         }}
                         className="font-sans font-semibold text-ocean-teal hover:text-sunset-orange transition-colors"
@@ -239,6 +243,8 @@ export default function ContactPage() {
                           name="message"
                           required
                           rows={5}
+                          value={message}
+                          onChange={(e) => setMessage(e.target.value)}
                           placeholder="Tell us about your travel dreams..."
                           className="w-full px-4 py-3 min-h-[48px] rounded-xl border border-dune bg-warm-cream font-sans text-navy placeholder:text-clay/50 focus:outline-none focus:border-ocean-teal transition-colors resize-none"
                         />
