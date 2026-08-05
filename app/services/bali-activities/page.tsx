@@ -61,7 +61,7 @@ export default function BaliActivitiesPage() {
                         {activity.category.join(" · ")}
                       </p>
                       <h3 className="font-serif text-xl font-bold text-navy mb-3 leading-snug">
-                        {activity.title}
+                        {activity.listingTitle ?? activity.title}
                       </h3>
                       <p className="font-sans text-sm leading-relaxed text-navy/70">
                         {activity.subtitle}

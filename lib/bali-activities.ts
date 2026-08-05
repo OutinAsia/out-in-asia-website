@@ -5,6 +5,8 @@ export interface BaliActivity {
   titleAccent?: string
   titleLine2?: string
   titleLine2Accent?: string
+  /** Full title used on the listing card (falls back to `title` if omitted) */
+  listingTitle?: string
   subtitle: string
   description: string
   program: string[]
@@ -27,6 +29,7 @@ export const baliActivities: BaliActivity[] = [
     title: "North Ubud",
     titleLine2: "Day",
     titleLine2Accent: "Trip",
+    listingTitle: "North Ubud Day Trip",
     subtitle: "Waterfalls, Sacred temples, Coffee testing and Rice terraces",
     description:
       "Begin with a visit to one of Bali's most beautiful waterfalls, reached through a scenic drive across the island's lush countryside. Continue to Pura Gunung Kawi Sebatu, a peaceful and authentic Balinese temple surrounded by tropical gardens and sacred springs. Afterwards, enjoy a guided tasting of locally grown coffee and tea. End the experience at the iconic Tegalalang rice terraces, where you can swing above the palms, take spectacular photos and enjoy lunch overlooking the breathtaking landscape.",
@@ -90,6 +93,7 @@ export const baliActivities: BaliActivity[] = [
     titleAccent: "Penida",
     titleLine2: "Day",
     titleLine2Accent: "Trip",
+    listingTitle: "Nusa Penida Day Trip",
     subtitle: "Discover the natural beauty of Nusa Penida",
     description:
       "Many people think these famous beaches are in Bali, but they are actually located on the nearby island of Nusa Penida, which we'll reach by speedboat in around 45 minutes. We'll visit the iconic Kelingking Beach, followed by the beautiful Broken Beach and Angel's Billabong, where turquoise waters and impressive coastal scenery create unforgettable views. This experience is perfect for anyone who loves beaches, nature and spectacular landscapes.",
