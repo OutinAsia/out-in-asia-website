@@ -9,6 +9,10 @@ interface ActivityPricingBlockProps {
 }
 
 export function ActivityPricingBlock({ fee, inclusions, exclusions, photoService, activityTitle }: ActivityPricingBlockProps) {
+  const feeMatch = fee.match(/^(.*?)\s*\(([^)]+)\)\s*$/)
+  const mainFee = feeMatch ? feeMatch[1] : fee
+  const feeNote = feeMatch ? feeMatch[2] : null
+
   return (
     <section className="py-10 md:py-16 bg-[#0E1F38]">
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
@@ -28,8 +32,13 @@ export function ActivityPricingBlock({ fee, inclusions, exclusions, photoService
             Participation Fee
           </p>
           <p className="font-serif text-white leading-none" style={{ fontSize: "clamp(1.6rem, 5vw, 2.25rem)" }}>
-            {fee}
+            {mainFee}
           </p>
+          {feeNote && (
+            <p className="font-sans text-sunset-orange text-xs font-semibold uppercase tracking-wide mt-2">
+              {feeNote}
+            </p>
+          )}
         </div>
 
         {/* Inclusions / Exclusions */}
