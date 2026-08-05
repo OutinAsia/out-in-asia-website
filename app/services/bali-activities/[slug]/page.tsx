@@ -77,31 +77,33 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
         {/* ── Stops + Description ── */}
         <section className="py-10 md:py-14 bg-warm-cream">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row lg:gap-16 lg:items-start gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-y-6 lg:gap-x-16">
 
-              {/* Stops — left on desktop, top on mobile */}
-              <div className="lg:w-2/5">
+              {/* Heading — col1 row1 */}
+              <div className="lg:col-start-1 lg:row-start-1">
                 <p className="font-sans text-xs tracking-[0.25em] uppercase text-ocean-teal mb-3">
                   The Activity
                 </p>
-                <h2 className="font-serif text-3xl font-bold text-navy mb-6">
+                <h2 className="font-serif text-3xl font-bold text-navy">
                   {activity.stopsHeading ?? "The Main"}{" "}
                   <span className="italic text-sunset-orange">{activity.stopsHeadingAccent ?? "Stops"}</span>
                 </h2>
-                <ul className="space-y-4">
-                  {activity.program.map((stop, i) => (
-                    <li key={i} className="flex items-start gap-4">
-                      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-sunset-orange text-white font-serif font-bold text-sm flex items-center justify-center">
-                        {i + 1}
-                      </span>
-                      <span className="font-sans text-base text-navy/80 pt-1">{stop}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
 
-              {/* Description — right on desktop, below stops on mobile */}
-              <div className="lg:w-3/5">
+              {/* Stops list — col1 row2 */}
+              <ul className="space-y-4 lg:col-start-1 lg:row-start-2">
+                {activity.program.map((stop, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-sunset-orange text-white font-serif font-bold text-sm flex items-center justify-center">
+                      {i + 1}
+                    </span>
+                    <span className="font-sans text-base text-navy/80 pt-1">{stop}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Description — col2 row2, top-aligned with the stops list (circle "1") */}
+              <div className="lg:col-start-2 lg:row-start-2">
                 <p className="font-sans text-sm md:text-base leading-relaxed text-navy/80 text-justify">
                   {activity.description}
                 </p>

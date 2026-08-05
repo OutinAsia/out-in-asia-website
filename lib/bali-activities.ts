@@ -72,12 +72,12 @@ export const baliActivities: BaliActivity[] = [
     description:
       "Embark on a spiritual inner journey through a traditional Balinese purification ritual. Release the blockages that hold you back and open yourself to receiving happiness and abundance. You will be guided by one of the island's most renowned healers. This mental and physical cleansing will undoubtedly be one of the most profound experiences of your life.",
     program: [
-      "Arrival: hibiscus tea and a refreshing towel",
-      "Choose a sarong (yours to keep as a gift)",
-      "Personal tarot reading and guidance from the healer",
-      "Balinese purification ceremony with sacred mantras and a fragrant flower bath",
-      "Prayers at the family altar for health, abundance and protection",
-      "Consecrated fruits and Balinese delicacies to take with you",
+      "Welcome with hibiscus tea and a refreshing towel",
+      "Choose a sarong to wear and keep",
+      "Personal reading and guidance from the healer",
+      "Purification ceremony with sacred mantras and a flower bath",
+      "Prayers and blessings at the family altar",
+      "Take-home offering of blessed fruits and Balinese treats",
     ],
     location: "Ubud",
     departure: "around 10am",
