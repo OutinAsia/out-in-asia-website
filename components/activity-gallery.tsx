@@ -13,7 +13,7 @@ export function ActivityGallery({ images }: ActivityGalleryProps) {
 
   return (
     <div>
-      <div className="relative h-72 sm:h-96 md:h-[420px] rounded-2xl overflow-hidden">
+      <div className="relative w-full aspect-[3/2] rounded-2xl overflow-hidden">
         <Image src={current.src} alt={current.alt} fill className="object-cover" />
       </div>
       <p className="font-sans text-sm text-navy/70 mt-3 mb-4">{current.alt}</p>
@@ -24,7 +24,7 @@ export function ActivityGallery({ images }: ActivityGalleryProps) {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`relative flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden transition-all ${
+              className={`relative flex-shrink-0 w-24 sm:w-28 aspect-[3/2] rounded-lg overflow-hidden transition-all ${
                 i === active ? "ring-2 ring-sunset-orange" : "opacity-70 hover:opacity-100"
               }`}
             >

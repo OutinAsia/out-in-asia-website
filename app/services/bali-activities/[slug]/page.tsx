@@ -64,7 +64,7 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
                     </span>
                   ))}
                 </div>
-                <p className="font-sans text-base leading-relaxed text-navy/80 max-w-xl">
+                <p className="font-sans text-sm md:text-base leading-relaxed text-navy/80 text-justify max-w-xl">
                   {activity.description}
                 </p>
               </div>
