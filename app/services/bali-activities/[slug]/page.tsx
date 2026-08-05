@@ -7,7 +7,7 @@ import { PageHero } from "@/components/page-hero";
 import { ActivityGallery } from "@/components/activity-gallery";
 import { ActivityPricingBlock } from "@/components/activity-pricing-block";
 import { BookingPolicySection } from "@/components/booking-policy-section";
-import { baliActivities, getBaliActivity } from "@/lib/bali-activities";
+import { baliActivities, getBaliActivity, getActivityFullTitle } from "@/lib/bali-activities";
 
 export async function generateStaticParams() {
   return baliActivities.map((activity) => ({ slug: activity.slug }));
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const activity = getBaliActivity(slug);
   if (!activity) return { title: "Activity Not Found" };
-  return { title: `${activity.title} | Out in Asia`, description: activity.subtitle };
+  return { title: `${getActivityFullTitle(activity)} | Out in Asia`, description: activity.subtitle };
 }
 
 export default async function BaliActivityPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -35,8 +35,8 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
         <PageHero
           image={activity.images[0].src}
           eyebrow={activity.category.join(" · ").toUpperCase()}
-          title={activity.title}
-          titleAccent={activity.titleAccent}
+          title={activity.titleLine1}
+          titleAccent={activity.titleLine1Accent}
           titleLine2={activity.titleLine2}
           titleLine2Accent={activity.titleLine2Accent}
           subtitle={activity.subtitle}
@@ -160,7 +160,7 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
           inclusions={activity.inclusions}
           exclusions={activity.exclusions}
           photoService={activity.photoService}
-          activityTitle={activity.title}
+          activityTitle={getActivityFullTitle(activity)}
         />
 
         {/* ── Booking policy ── */}

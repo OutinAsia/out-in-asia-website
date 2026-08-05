@@ -9,9 +9,10 @@ interface ActivityPricingBlockProps {
 }
 
 export function ActivityPricingBlock({ fee, inclusions, exclusions, photoService, activityTitle }: ActivityPricingBlockProps) {
-  const feeMatch = fee.match(/^(.*?)\s*\(([^)]+)\)\s*$/)
+  const feeMatch = fee.match(/^(.*?)\s*\(([^)]+)\)(.*)$/)
   const mainFee = feeMatch ? feeMatch[1] : fee
   const feeNote = feeMatch ? feeMatch[2] : null
+  const feeExtra = feeMatch?.[3]?.replace(/^\s*[—-]\s*/, "").trim() || null
 
   return (
     <section className="py-10 md:py-16 bg-[#0E1F38]">
@@ -37,6 +38,11 @@ export function ActivityPricingBlock({ fee, inclusions, exclusions, photoService
           {feeNote && (
             <p className="font-sans text-sunset-orange text-xs font-semibold uppercase tracking-wide mt-2">
               {feeNote}
+            </p>
+          )}
+          {feeExtra && (
+            <p className="font-sans text-white/50 text-xs mt-2">
+              {feeExtra}
             </p>
           )}
         </div>

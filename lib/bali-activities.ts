@@ -1,11 +1,11 @@
 export interface BaliActivity {
   slug: string
   category: string[]
-  title: string
-  titleAccent?: string
+  titleLine1: string
+  titleLine1Accent?: string
   titleLine2?: string
   titleLine2Accent?: string
-  /** Full title used on the listing card (falls back to `title` if omitted) */
+  /** Full title used on the listing card (falls back to the concatenated title lines if omitted) */
   listingTitle?: string
   /** Overrides the "The Main" / "Stops" heading above the program list (defaults to "The Main" / "Stops") */
   stopsHeading?: string
@@ -29,7 +29,7 @@ export const baliActivities: BaliActivity[] = [
   {
     slug: "north-ubud-day-trip",
     category: ["Nature", "Culture", "Gastronomy"],
-    title: "North Ubud",
+    titleLine1: "North Ubud",
     titleLine2: "Day",
     titleLine2Accent: "Trip",
     listingTitle: "North Ubud Day Trip",
@@ -45,7 +45,7 @@ export const baliActivities: BaliActivity[] = [
     location: "Ubud",
     departure: "around 8am",
     arrival: "around 5pm",
-    fee: "€150 / Person (Min. 2 People)",
+    fee: "€150 / Person (Min.2 People)",
     inclusions:
       "Pick up and drop off at your hotel, transportation between activities, guides during the activities, drinking water, entrance tickets, Sarung (traditional Balinese cloth required in sacred places).",
     exclusions: "Personal expenses, lunch and extra activities like the swing are not included in the price.",
@@ -63,7 +63,8 @@ export const baliActivities: BaliActivity[] = [
   {
     slug: "private-purification-ceremony",
     category: ["Spiritual"],
-    title: "Purification Ceremony",
+    titleLine1: "Purification",
+    titleLine1Accent: "Ceremony",
     titleLine2: "with a Balinese",
     titleLine2Accent: "Healer",
     stopsHeading: "The Healing",
@@ -82,11 +83,11 @@ export const baliActivities: BaliActivity[] = [
     location: "Ubud",
     departure: "around 10am",
     arrival: "around 2pm",
-    fee: "€210 / Person (Min. 2 People)",
+    fee: "€210 / Person (Min.2 People)",
     inclusions:
-      "Transportation, sacred private purification ceremony, Sarung (traditional Balinese cloth required in sacred places).",
+      "Pick up and drop off at your hotel, experience with the Balinese healer, Sarung (traditional Balinese cloth required in sacred places).",
     photoService: "Professional photo service including editing: 50€/person (on request, minimum 2 people)",
-    whatToBring: "Comfortable light clothes.",
+    whatToBring: "Comfortable light clothes, swimming shorts and dry change of clothes.",
     fitnessLevel: "No physical effort required.",
     images: [
       { src: "/bali-activities/activity-2/A2-01.png", alt: "Sacred purification with a Balinese healer" },
@@ -97,8 +98,8 @@ export const baliActivities: BaliActivity[] = [
   {
     slug: "nusa-penida-dream-day-trip",
     category: ["Nature"],
-    title: "Nusa",
-    titleAccent: "Penida",
+    titleLine1: "Nusa",
+    titleLine1Accent: "Penida",
     titleLine2: "Day",
     titleLine2Accent: "Trip",
     listingTitle: "Nusa Penida Day Trip",
@@ -114,12 +115,12 @@ export const baliActivities: BaliActivity[] = [
     location: "Nusa Penida Island",
     departure: "around 6:45am",
     arrival: "around 6:30pm",
-    fee: "€210 / Person (Min. 2 People)",
+    fee: "€210 / Person (Min.2 People)",
     inclusions:
       "Pick up and drop off at your hotel, speed boat both ways from Sanur to Nusa Penida, transportation between activities, guides during the activities, drinking water, entrance tickets.",
     exclusions: "Personal expenses and lunch are not included in the price.",
     photoService: "Professional photo service including editing: 200€ (on request)",
-    whatToBring: "Comfortable light clothes, swimming suit (towels provided).",
+    whatToBring: "Comfortable light clothes, swimming shorts and dry change of clothes (towels provided).",
     fitnessLevel: "Easy — only short walks.",
     images: [
       { src: "/bali-activities/activity-3/A3-01.jpg", alt: "Kelingking Beach" },
@@ -128,8 +129,44 @@ export const baliActivities: BaliActivity[] = [
       { src: "/bali-activities/activity-3/A3-04.jpg", alt: "Crystal Bay" },
     ],
   },
+  {
+    slug: "elephant-park",
+    category: ["Nature"],
+    titleLine1: "Elephant",
+    titleLine1Accent: "Park",
+    subtitle: "A Close Encounter with Elephants",
+    description:
+      "During this special experience, you will meet the elephants up close and learn about their lives and daily care. You will begin by preparing their food, then feed them during a walk through the park's natural surroundings. Their caretakers will share interesting facts about the elephants' behavior, habits and routines, helping you understand these remarkable animals better. One of the highlights is bathing them in the water — a playful and memorable moment for both you and the elephants. You will also have time to take photos and watch a short educational video about their care.",
+    program: [
+      "Preparing the elephants' lunch",
+      "Walking with the elephants and feeding them",
+      "Bathing the elephants",
+      "Receiving information from the caretakers, plus a short video",
+      "Taking photos and videos with the elephants",
+      "Buffet lunch",
+    ],
+    location: "Ubud",
+    departure: "around 8am",
+    arrival: "around 2pm",
+    fee: "€160 / Person (Min.2 People) — €230 / Person if combined with rafting (add-on)",
+    inclusions: "Pick up and drop off at your hotel, guides during the activities, drinking water, entrance tickets, buffet lunch.",
+    exclusions: "Personal expenses are not included in the price.",
+    photoService: "Professional photo service including editing: 185€ (on request)",
+    whatToBring: "Comfortable light clothes.",
+    fitnessLevel: "Light — no physical effort required for this activity.",
+    images: [
+      { src: "/bali-activities/activity-4/A4-01.png", alt: "Experience a day with the elephants" },
+      { src: "/bali-activities/activity-4/A4-02.png", alt: "Experience a day with the elephants" },
+    ],
+  },
 ]
 
 export function getBaliActivity(slug: string): BaliActivity | undefined {
   return baliActivities.find((activity) => activity.slug === slug)
+}
+
+export function getActivityFullTitle(activity: BaliActivity): string {
+  const line1 = [activity.titleLine1, activity.titleLine1Accent].filter(Boolean).join(" ")
+  const line2 = [activity.titleLine2, activity.titleLine2Accent].filter(Boolean).join(" ")
+  return [line1, line2].filter(Boolean).join(" ")
 }

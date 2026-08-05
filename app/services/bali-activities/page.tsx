@@ -4,7 +4,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PageTransition } from "@/components/page-transition";
 import { PageHero } from "@/components/page-hero";
-import { baliActivities } from "@/lib/bali-activities";
+import { baliActivities, getActivityFullTitle } from "@/lib/bali-activities";
 
 export const metadata = {
   title: "Bali Activities | Out in Asia",
@@ -39,7 +39,7 @@ export default function BaliActivitiesPage() {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 {baliActivities.map((activity) => (
                   <Link
                     key={activity.slug}
@@ -61,7 +61,7 @@ export default function BaliActivitiesPage() {
                         {activity.category.join(" · ")}
                       </p>
                       <h3 className="font-serif text-xl font-bold text-navy mb-3 leading-snug">
-                        {activity.listingTitle ?? activity.title}
+                        {activity.listingTitle ?? getActivityFullTitle(activity)}
                       </h3>
                       <p className="font-sans text-sm leading-relaxed text-navy/70">
                         {activity.subtitle}
