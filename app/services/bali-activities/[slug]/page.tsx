@@ -77,7 +77,7 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
         {/* ── Stops + Description ── */}
         <section className="py-10 md:py-14 bg-warm-cream">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-y-6 lg:gap-x-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-6 lg:gap-x-16">
 
               {/* Heading — col1 row1 */}
               <div className="lg:col-start-1 lg:row-start-1">
@@ -97,7 +97,7 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
                     <span className="flex-shrink-0 w-8 h-8 rounded-full bg-sunset-orange text-white font-serif font-bold text-sm flex items-center justify-center">
                       {i + 1}
                     </span>
-                    <span className="font-sans text-base text-navy/80 pt-1">{stop}</span>
+                    <span className="font-sans text-sm md:text-base leading-relaxed text-navy/80 pt-1">{stop}</span>
                   </li>
                 ))}
               </ul>
