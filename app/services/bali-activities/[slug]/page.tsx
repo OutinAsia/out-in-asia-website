@@ -36,6 +36,8 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
           image={activity.images[0].src}
           eyebrow={activity.category.join(" · ").toUpperCase()}
           title={activity.title}
+          titleLine2={activity.titleLine2}
+          titleLine2Accent={activity.titleLine2Accent}
           subtitle={activity.subtitle}
           topContent={
             <Link
@@ -51,45 +53,45 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
         {/* ── Description + Program ── */}
         <section className="py-10 md:py-14 bg-warm-cream">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16 items-start gap-10">
-              {/* Description */}
-              <div>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {activity.category.map((cat) => (
-                    <span
-                      key={cat}
-                      className="px-3 py-1 rounded-full bg-ocean-teal/10 text-ocean-teal text-xs font-sans font-semibold tracking-widest uppercase"
-                    >
-                      {cat}
-                    </span>
-                  ))}
-                </div>
-                <p className="font-sans text-sm md:text-base leading-relaxed text-navy/80 text-justify max-w-xl">
-                  {activity.description}
-                </p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-10 lg:gap-x-16 lg:gap-y-16">
+              {/* Category tags — top-left */}
+              <div className="flex flex-wrap gap-2 mb-6 lg:mb-0 lg:col-start-1 lg:row-start-1">
+                {activity.category.map((cat) => (
+                  <span
+                    key={cat}
+                    className="px-3 py-1 rounded-full bg-ocean-teal/10 text-ocean-teal text-xs font-sans font-semibold tracking-widest uppercase"
+                  >
+                    {cat}
+                  </span>
+                ))}
               </div>
 
-              {/* Program */}
-              <div>
-                <div className="mb-6">
-                  <p className="font-sans text-xs tracking-[0.25em] uppercase text-ocean-teal mb-3">
-                    The Itinerary
-                  </p>
-                  <h2 className="font-serif text-3xl font-bold text-navy">
-                    The <span className="italic text-sunset-orange">Program</span>
-                  </h2>
-                </div>
-                <ul className="space-y-4">
-                  {activity.program.map((stop, i) => (
-                    <li key={i} className="flex items-start gap-4">
-                      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-sunset-orange text-white font-serif font-bold text-sm flex items-center justify-center">
-                        {i + 1}
-                      </span>
-                      <span className="font-sans text-base text-navy/80 pt-1">{stop}</span>
-                    </li>
-                  ))}
-                </ul>
+              {/* Description paragraph — mobile: right after tags. Desktop: bottom-left, top-aligned with the program list */}
+              <p className="font-sans text-sm md:text-base leading-relaxed text-navy/80 text-justify max-w-xl lg:col-start-1 lg:row-start-2">
+                {activity.description}
+              </p>
+
+              {/* Itinerary heading — mobile: after description. Desktop: top-right */}
+              <div className="mb-6 lg:mb-0 lg:col-start-2 lg:row-start-1">
+                <p className="font-sans text-xs tracking-[0.25em] uppercase text-ocean-teal mb-3">
+                  The Itinerary
+                </p>
+                <h2 className="font-serif text-3xl font-bold text-navy">
+                  The <span className="italic text-sunset-orange">Program</span>
+                </h2>
               </div>
+
+              {/* Program list — bottom-right */}
+              <ul className="space-y-4 lg:col-start-2 lg:row-start-2">
+                {activity.program.map((stop, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-sunset-orange text-white font-serif font-bold text-sm flex items-center justify-center">
+                      {i + 1}
+                    </span>
+                    <span className="font-sans text-base text-navy/80 pt-1">{stop}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
