@@ -38,7 +38,7 @@ export const baliActivities: BaliActivity[] = [
     location: "Ubud",
     departure: "around 8am",
     arrival: "around 5pm",
-    fee: "150 Euro/person (valid for a minimum of 2 people)",
+    fee: "€150 / Person (Min. 2 People)",
     inclusions:
       "Pick up and drop off at your hotel, transportation between activities, guides during the activities, drinking water, entrance tickets, Sarung (traditional Balinese cloth required in sacred places).",
     exclusions: "Personal expenses, lunch and extra activities like the swing are not included in the price.",
@@ -73,7 +73,7 @@ export const baliActivities: BaliActivity[] = [
     location: "Ubud",
     departure: "around 10am",
     arrival: "around 2pm",
-    fee: "210 Euro/person (valid for a minimum of 2 people)",
+    fee: "€210 / Person (Min. 2 People)",
     inclusions: "Transportation.",
     photoService: "Professional photo service including editing: 50€/person (on request, minimum 2 people)",
     whatToBring: "Comfortable light clothes.",
@@ -100,7 +100,7 @@ export const baliActivities: BaliActivity[] = [
     location: "Nusa Penida Island",
     departure: "around 6:45am",
     arrival: "around 6:30pm",
-    fee: "210 Euro/person (valid for a minimum of 2 people), including pick up and drop off at your hotel",
+    fee: "€210 / Person (Min. 2 People)",
     inclusions:
       "Pick up and drop off at your hotel, speed boat both ways from Sanur to Nusa Penida, transportation between activities, guides during the activities, drinking water, entrance tickets.",
     exclusions: "Personal expenses and lunch are not included in the price.",
