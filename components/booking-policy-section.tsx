@@ -9,7 +9,7 @@ export function BookingPolicySection() {
           Booking <span className="italic text-sunset-orange">Information</span>
         </h2>
 
-        <div className="space-y-5 font-sans text-sm leading-relaxed text-[#7A6A58]">
+        <div className="space-y-5 font-sans text-sm leading-relaxed text-[#7A6A58] text-justify">
           <p>
             Your reservation will be confirmed upon receipt of the deposit (50% of the total package price /
             selected optional programs). This amount covers the reservation costs of the hotels/programs.
