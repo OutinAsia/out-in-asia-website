@@ -36,6 +36,7 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
           image={activity.images[0].src}
           eyebrow={activity.category.join(" · ").toUpperCase()}
           title={activity.title}
+          titleAccent={activity.titleAccent}
           titleLine2={activity.titleLine2}
           titleLine2Accent={activity.titleLine2Accent}
           subtitle={activity.subtitle}

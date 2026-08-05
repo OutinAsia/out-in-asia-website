@@ -2,6 +2,7 @@ export interface BaliActivity {
   slug: string
   category: string[]
   title: string
+  titleAccent?: string
   titleLine2?: string
   titleLine2Accent?: string
   subtitle: string
@@ -85,8 +86,9 @@ export const baliActivities: BaliActivity[] = [
   {
     slug: "nusa-penida-dream-day-trip",
     category: ["Nature"],
-    title: "Nusa Penida",
-    titleLine2: "Dream Day",
+    title: "Nusa",
+    titleAccent: "Penida",
+    titleLine2: "Day",
     titleLine2Accent: "Trip",
     subtitle: "Discover the natural beauty of Nusa Penida",
     description:
