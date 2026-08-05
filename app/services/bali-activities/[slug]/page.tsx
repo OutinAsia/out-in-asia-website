@@ -85,8 +85,8 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
                   The Activity
                 </p>
                 <h2 className="font-serif text-3xl font-bold text-navy">
-                  {activity.stopsHeading ?? "The Main"}{" "}
-                  <span className="italic text-sunset-orange">{activity.stopsHeadingAccent ?? "Stops"}</span>
+                  Experience{" "}
+                  <span className="italic text-sunset-orange">Highlights</span>
                 </h2>
               </div>
 
