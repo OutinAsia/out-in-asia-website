@@ -47,7 +47,7 @@ export function ActivityPricingBlock({ fee, inclusions, exclusions, photoService
             <Check className="h-4 w-4 text-ocean-teal flex-shrink-0 mt-0.5" strokeWidth={2.5} />
             <div>
               <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-ocean-teal mb-1.5">Included</p>
-              <p className="font-sans text-white/70 text-sm leading-relaxed text-justify">{inclusions}</p>
+              <p className="font-sans text-white/70 text-sm leading-relaxed">{inclusions}</p>
             </div>
           </div>
           {exclusions && (
@@ -55,7 +55,7 @@ export function ActivityPricingBlock({ fee, inclusions, exclusions, photoService
               <X className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: "#EA5A2A" }} strokeWidth={2} />
               <div>
                 <p className="font-sans text-[10px] tracking-[0.2em] uppercase mb-1.5" style={{ color: "#EA5A2A" }}>Not Included</p>
-                <p className="font-sans text-white/50 text-sm leading-relaxed text-justify">{exclusions}</p>
+                <p className="font-sans text-white/50 text-sm leading-relaxed">{exclusions}</p>
               </div>
             </div>
           )}
@@ -64,7 +64,7 @@ export function ActivityPricingBlock({ fee, inclusions, exclusions, photoService
               <Camera className="h-4 w-4 text-ocean-teal flex-shrink-0 mt-0.5" />
               <div>
                 <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-ocean-teal mb-1.5">Optional Add-On</p>
-                <p className="font-sans text-white/70 text-sm leading-relaxed text-justify">{photoService}</p>
+                <p className="font-sans text-white/70 text-sm leading-relaxed">{photoService}</p>
               </div>
             </div>
           )}

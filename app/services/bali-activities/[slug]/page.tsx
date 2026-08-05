@@ -82,10 +82,11 @@ export default async function BaliActivityPage({ params }: { params: Promise<{ s
               {/* Stops — left on desktop, top on mobile */}
               <div className="lg:w-2/5">
                 <p className="font-sans text-xs tracking-[0.25em] uppercase text-ocean-teal mb-3">
-                  The Itinerary
+                  The Activity
                 </p>
                 <h2 className="font-serif text-3xl font-bold text-navy mb-6">
-                  The Main <span className="italic text-sunset-orange">Stops</span>
+                  {activity.stopsHeading ?? "The Main"}{" "}
+                  <span className="italic text-sunset-orange">{activity.stopsHeadingAccent ?? "Stops"}</span>
                 </h2>
                 <ul className="space-y-4">
                   {activity.program.map((stop, i) => (

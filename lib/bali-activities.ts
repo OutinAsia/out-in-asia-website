@@ -7,6 +7,9 @@ export interface BaliActivity {
   titleLine2Accent?: string
   /** Full title used on the listing card (falls back to `title` if omitted) */
   listingTitle?: string
+  /** Overrides the "The Main" / "Stops" heading above the program list (defaults to "The Main" / "Stops") */
+  stopsHeading?: string
+  stopsHeadingAccent?: string
   subtitle: string
   description: string
   program: string[]
@@ -63,6 +66,8 @@ export const baliActivities: BaliActivity[] = [
     title: "Purification Ceremony",
     titleLine2: "with a Balinese",
     titleLine2Accent: "Healer",
+    stopsHeading: "The Healing",
+    stopsHeadingAccent: "Process",
     subtitle: "A sacred journey to reconnect with yourself",
     description:
       "Embark on a spiritual inner journey through a traditional Balinese purification ritual. Release the blockages that hold you back and open yourself to receiving happiness and abundance. You will be guided by one of the island's most renowned healers. This mental and physical cleansing will undoubtedly be one of the most profound experiences of your life.",
