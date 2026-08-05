@@ -7,6 +7,8 @@ export interface BaliActivity {
   titleLine2Accent?: string
   /** Full title used on the listing card (falls back to the concatenated title lines if omitted) */
   listingTitle?: string
+  /** Detail-page hero image (falls back to images[0].src if omitted) */
+  heroImage?: string
   subtitle: string
   description: string
   program: string[]
@@ -30,6 +32,7 @@ export const baliActivities: BaliActivity[] = [
     titleLine2: "Day",
     titleLine2Accent: "Trip",
     listingTitle: "North Ubud Day Trip",
+    heroImage: "/bali-activities/activity-1/A1-04.png",
     subtitle: "Waterfalls, Sacred temples, Coffee testing and Rice terraces",
     description:
       "Begin with a visit to one of Bali's most beautiful waterfalls, reached through a scenic drive across the island's lush countryside. Continue to Pura Gunung Kawi Sebatu, a peaceful and authentic Balinese temple surrounded by tropical gardens and sacred springs. Afterwards, enjoy a guided tasting of locally grown coffee and tea. End the experience at the iconic Tegalalang rice terraces, where you can swing above the palms, take spectacular photos and enjoy lunch overlooking the breathtaking landscape.",
