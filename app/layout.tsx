@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Fraunces, Manrope } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
-import { WhatsAppButton } from '@/components/whatsapp-button'
 import './globals.css'
 
 const fraunces = Fraunces({
@@ -54,7 +53,6 @@ export default function RootLayout({
             {children}
           </div>
           {process.env.NODE_ENV === 'production' && <Analytics />}
-          <WhatsAppButton />
         </ThemeProvider>
       </body>
     </html>
