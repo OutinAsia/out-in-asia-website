@@ -17,8 +17,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: 'Out in Asia | Travel Gay • Be You • Belong Together',
-  description: 'Out in Asia - LGBTQ+ travel experiences across Asia. Travel Gay, Be You, Belong Together.',
+  title: 'Gay Group Tours in Asia & Private Trips | Out in Asia',
+description: 'Discover gay group tours and bespoke private trips across Southeast Asia with Out in Asia. Explore Bali, Thailand, Vietnam and more with expert guides.',
   verification: {
   google: 'zHWIfFlcCM-8SJl83A2XFMg5Hzxs04bH6BtFwFvQP0s',
 },
