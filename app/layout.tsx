@@ -19,6 +19,9 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: 'Out in Asia | Travel Gay • Be You • Belong Together',
   description: 'Out in Asia - LGBTQ+ travel experiences across Asia. Travel Gay, Be You, Belong Together.',
+  verification: {
+  google: 'zHWIfFlcCM-8SJl83A2XFMg5Hzxs04bH6BtFwFvQP0s',
+},
   generator: 'v0.app',
   icons: {
     icon: [
