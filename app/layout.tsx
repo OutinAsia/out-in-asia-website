@@ -18,6 +18,9 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.outinasia.com'),
+  alternates: {
+  canonical: '/',
+},
   title: 'Gay Group Tours in Asia & Private Trips | Out in Asia',
 description: 'Discover gay group tours and bespoke private trips across Southeast Asia with Out in Asia. Explore Bali, Thailand, Vietnam and more with expert guides.',
   verification: {
