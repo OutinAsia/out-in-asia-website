@@ -7,11 +7,13 @@ import { PageTransition } from "@/components/page-transition";
 import { PageHero } from "@/components/page-hero";
 import { siteConfig } from "@/lib/config";
 
+
 export const metadata = {
-  title: "Group Trips | Out in Asia",
+  title: "Gay Group Tours in Asia | Out in Asia",
   description:
-    "Explore our curated LGBTQ+ group travel experiences across Southeast Asia: Thailand, Vietnam, and Bali. High-end journeys designed for gay travelers.",
+    "Join small-group gay tours across Southeast Asia with Out in Asia. Discover curated group trips in Bali, Thailand and Vietnam, led by expert local guides.",
 };
+
 
 // D — What We Offer items (no trailing periods)
 const WHAT_WE_OFFER = [
