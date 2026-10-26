@@ -156,12 +156,39 @@ export async function generateStaticParams() {
   return siteConfig.trips.map((trip) => ({ slug: trip.id }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const trip = siteConfig.trips.find((t) => t.id === slug);
-  if (!trip) return { title: "Trip Not Found" };
-  return { title: `${trip.title} | Out in Asia`, description: trip.description };
+
+  if (!trip) {
+    return { title: "Trip Not Found | Out in Asia" };
+  }
+
+  const seoTitles: Record<string, string> = {
+    bali: "Gay Group Tours in Bali | Out in Asia",
+    thailand: "Gay Group Tours in Thailand | Out in Asia",
+    "north-vietnam": "Gay Group Tours in North Vietnam | Out in Asia",
+    "south-vietnam": "Gay Group Tours in South Vietnam | Out in Asia",
+  };
+
+  const seoDescriptions: Record<string, string> = {
+    bali: "Discover Bali on a small-group gay tour with Out in Asia. Explore Ubud, temples, rice terraces and beaches with expert local guides.",
+    thailand: "Join a small-group gay tour in Thailand with Out in Asia. Discover Bangkok, Chiang Mai and tropical islands with expert local guides.",
+    "north-vietnam": "Explore North Vietnam on a small-group gay tour with Out in Asia. Discover Hanoi, Ha Long Bay, Sapa and stunning mountain landscapes.",
+    "south-vietnam": "Discover South Vietnam on a small-group gay tour with Out in Asia. Explore Ho Chi Minh City, the Mekong Delta and Phu Quoc.",
+  };
+
+  return {
+    title: seoTitles[slug] ?? `${trip.title} | Out in Asia`,
+    description: seoDescriptions[slug] ?? trip.description,
+  };
 }
+
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
